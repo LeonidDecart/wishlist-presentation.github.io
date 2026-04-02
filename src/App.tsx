@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ChevronLeft, 
@@ -116,7 +116,7 @@ export default function App() {
         Система управления списками желаний с модулем поддержки
       </motion.p>
       <div className="absolute bottom-20 text-gray-400 font-medium tracking-wide">
-        Команда проекта: Константин, Никита, Леонид | 2026 год
+        Команда проекта: Степан Костюк, Никита Голубев, Леонид Симоненко | 2026 год
       </div>
     </div>,
 
@@ -147,20 +147,20 @@ export default function App() {
 
     // Slide 3: Архитектура
     <div key="s3" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10">
-      <h2 className="text-5xl font-bold text-gray-900 mb-12">Архитектура проекта</h2>
-      <div className="grid grid-cols-[1fr_1.5fr] gap-12 items-center">
+      <h2 className="text-5xl font-bold text-gray-900 mb-8">Архитектура проекта</h2>
+      <div className="grid grid-cols-[1fr_2.5fr] gap-12 items-center">
         <BulletList items={[
           "Контейнеризация: Docker + Laravel Sail",
           "Backend: Laravel (PHP-FPM)",
           "СУБД: SQLite",
           "Файловое хранилище: Local Storage (symlink)"
         ]} />
-        <div className="bg-white p-4 rounded-3xl border border-gray-200 shadow-2xl">
+        <div className="bg-white p-2 rounded-3xl border border-gray-200 shadow-2xl overflow-hidden">
           <img 
             src="/images/slide3-arch.png" 
             alt="Архитектурная схема взаимодействия" 
             referrerPolicy="no-referrer"
-            className="w-full h-auto object-contain rounded-xl" 
+            className="w-full h-auto object-contain rounded-2xl" 
           />
         </div>
       </div>
@@ -190,20 +190,20 @@ export default function App() {
 
     // Slide 5: Структура БД
     <div key="s5" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10">
-      <h2 className="text-5xl font-bold text-gray-900 mb-8">Структура Базы Данных</h2>
-      <div className="grid grid-cols-[1fr_2fr] gap-12 items-center">
+      <h2 className="text-5xl font-bold text-gray-900 mb-6">Структура Базы Данных</h2>
+      <div className="grid grid-cols-[1fr_3fr] gap-12 items-center">
         <BulletList items={[
           "users (Пользователи и роли)",
           "wishes (Желания и статусы)",
           "friendships (Связи Many-to-Many)",
           "error_reports (Обращения в поддержку)"
         ]} />
-        <div className="bg-white p-4 rounded-3xl border border-gray-200 shadow-2xl">
+        <div className="bg-white p-2 rounded-3xl border border-gray-200 shadow-2xl overflow-hidden">
           <img 
             src="/images/slide5-db.png" 
             alt="Схема БД" 
             referrerPolicy="no-referrer"
-            className="w-full h-auto object-contain rounded-xl" 
+            className="w-full h-auto object-contain rounded-2xl" 
           />
         </div>
       </div>
@@ -278,30 +278,38 @@ export default function App() {
     </div>,
 
     // Slide 9: Друзья и заявки
-    <div key="s9" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10">
-      <h2 className="text-5xl font-bold text-gray-900 mb-12">Социальное взаимодействие</h2>
-      <div className="grid grid-cols-2 gap-10 mb-10">
-        <div className="bg-white p-2 rounded-2xl border border-gray-200 shadow-lg">
+    <div key="s9" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10 py-6">
+      <h2 className="text-4xl font-bold text-gray-900 mb-6">Социальное взаимодействие</h2>
+      <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="bg-white p-1 rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
           <img 
             src="/images/slide9-friends.png" 
             alt="Список друзей" 
             referrerPolicy="no-referrer"
-            className="w-full h-auto object-contain rounded-lg" 
+            className="w-full h-auto max-h-[58vh] object-contain rounded-lg" 
           />
         </div>
-        <div className="bg-white p-2 rounded-2xl border border-gray-200 shadow-lg">
+        <div className="bg-white p-1 rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
           <img 
             src="/images/slide9-requests.png" 
             alt="Входящие заявки" 
             referrerPolicy="no-referrer"
-            className="w-full h-auto object-contain rounded-lg" 
+            className="w-full h-auto max-h-[58vh] object-contain rounded-lg" 
           />
         </div>
       </div>
-      <BulletList items={[
-        "Отправка заявок по email.",
-        "Жизненный цикл связи: Pending -> Accepted."
-      ]} />
+      <div className="bg-purple-50 p-4 rounded-2xl border border-purple-100">
+        <div className="flex justify-around items-center gap-8">
+          <div className="flex items-center gap-3 text-gray-700 text-lg font-medium">
+            <span className="w-2 h-2 rounded-full bg-purple-500 shrink-0" />
+            Отправка заявок по email
+          </div>
+          <div className="flex items-center gap-3 text-gray-700 text-lg font-medium">
+            <span className="w-2 h-2 rounded-full bg-purple-500 shrink-0" />
+            Жизненный цикл: Pending → Accepted
+          </div>
+        </div>
+      </div>
     </div>,
 
     // Slide 10: Вишлист друга
@@ -365,30 +373,34 @@ export default function App() {
     </div>,
 
     // Slide 13: Роли и ACL
-    <div key="s13" className="max-w-6xl w-full mx-auto h-full flex flex-col justify-center px-10">
-      <h2 className="text-5xl font-bold text-gray-900 mb-12">Управление доступом (RBAC)</h2>
-      <div className="overflow-hidden rounded-3xl border border-gray-200 shadow-xl">
-        <table className="w-full text-left border-collapse">
-          <thead className="bg-gray-50 border-b border-gray-200">
-            <tr>
-              <th className="py-4 px-8 font-bold text-gray-900 text-lg">Роль</th>
-              <th className="py-4 px-8 font-bold text-gray-900 text-lg">Права</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {[
-              ["Гость", "Чтение публичной ленты, отправка жалоб."],
-              ["Пользователь", "Управление своим контентом, бронирование."],
-              ["Редактор", "Права пользователя + модерация контента."],
-              ["Админ", "Доступ в админку, изменение ролей, ответы на тикеты."]
-            ].map(([role, rights], i) => (
-              <tr key={i} className="bg-white">
-                <td className="py-6 px-8 font-bold text-purple-600 text-xl">{role}</td>
-                <td className="py-6 px-8 text-gray-600 text-lg">{rights}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div key="s13" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10">
+      <h2 className="text-5xl font-bold text-gray-900 mb-16">Управление доступом (RBAC)</h2>
+      <div className="relative flex justify-between items-center gap-4">
+        {[
+          { role: "Гость", rights: "Чтение публичной ленты, отправка жалоб.", color: "bg-gray-100 text-gray-600" },
+          { role: "Пользователь", rights: "Управление своим контентом, бронирование.", color: "bg-blue-100 text-blue-600" },
+          { role: "Редактор", rights: "Права пользователя + модерация контента.", color: "bg-indigo-100 text-indigo-600" },
+          { role: "Админ", rights: "Доступ в админку, изменение ролей, ответы на тикеты.", color: "bg-purple-600 text-white" }
+        ].map((item, i) => (
+          <React.Fragment key={i}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.1 }}
+              className={`flex-1 p-8 rounded-3xl shadow-xl border border-white/50 backdrop-blur-sm ${item.color} flex flex-col gap-4 min-h-[280px]`}
+            >
+              <div className="text-xs font-black uppercase tracking-widest opacity-60">Уровень {i + 1}</div>
+              <h3 className="text-3xl font-black tracking-tight">{item.role}</h3>
+              <div className="h-px w-full bg-current opacity-20 my-2" />
+              <p className="text-lg leading-snug font-medium opacity-90">{item.rights}</p>
+            </motion.div>
+            {i < 3 && (
+              <div className="flex items-center text-gray-300">
+                <ChevronRight size={40} strokeWidth={3} />
+              </div>
+            )}
+          </React.Fragment>
+        ))}
       </div>
     </div>,
 
@@ -423,24 +435,41 @@ export default function App() {
     </div>,
 
     // Slide 16: Кто что делал
-    <div key="s16" className="max-w-6xl w-full mx-auto h-full flex flex-col justify-center px-10">
-      <h2 className="text-5xl font-bold text-gray-900 mb-16">Командная работа</h2>
-      <div className="grid grid-cols-3 gap-12">
+    <div key="s16" className="max-w-7xl w-full mx-auto h-full flex flex-col justify-center px-10 py-4">
+      <h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">Команда проекта</h2>
+      <div className="grid grid-cols-3 gap-6">
         {[
-          { name: "Константин", tasks: "Бизнес-логика вишлистов, инфраструктура, фронтенд, связи БД." },
-          { name: "Никита", tasks: "Аутентификация, система ролей (Enum), Policies, ACL, модерация." },
-          { name: "Леонид", tasks: "Модуль поддержки (отдельный пакет), PDO, DI-контейнер, кастомная обработка исключений и файлов." }
+          { name: "Степан Костюк", tasks: "Бизнес-логика вишлистов, инфраструктура, фронтенд, связи БД.", avatar: "/photos/stepan.jpeg" },
+          { name: "Никита Голубев", tasks: "Аутентификация, система ролей (Enum), Policies, ACL, модерация." },
+          { name: "Леонид Симоненко", tasks: "Модуль поддержки (отдельный пакет), PDO, DI-контейнер, кастомная обработка исключений и файлов.", avatar: "/photos/leonid.jpg" }
         ].map((member, i) => (
-          <div key={i} className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100">
-            <div className="w-16 h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center mb-8">
-              <User size={32} />
+          <motion.div 
+            key={i}
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-3xl shadow-xl shadow-purple-200/40 border border-gray-100 overflow-hidden flex flex-col"
+          >
+            <div className="aspect-[4/3] w-full bg-gray-100 relative overflow-hidden group">
+              {member.avatar ? (
+                <img src={member.avatar} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-purple-50 text-purple-200">
+                  <User size={80} strokeWidth={1} />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <span className="text-white font-medium text-base">Fullstack Developer</span>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">{member.name}</h3>
-            <p className="text-gray-600 leading-relaxed text-lg">{member.tasks}</p>
-          </div>
+            <div className="p-6 flex flex-col gap-3 flex-grow">
+              <h3 className="text-2xl font-black text-gray-900 tracking-tight leading-none">{member.name}</h3>
+              <div className="w-10 h-1 bg-purple-600 rounded-full" />
+              <p className="text-gray-500 leading-relaxed text-base font-medium">{member.tasks}</p>
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
+
   ];
 
   return (
